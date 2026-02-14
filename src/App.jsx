@@ -13,6 +13,7 @@ const PHOTOS = [
   { src: "/images/1.jpg", alt: "Anh va em - khoanh khac 1" },
   { src: "/images/2.jpg", alt: "Anh va em - khoanh khac 2" },
   { src: "/images/3.jpg", alt: "Anh va em - khoanh khac 3" },
+  { src: "/images/4.jpg", alt: "Anh va em - khoanh khac 4" },
 ];
 
 const AUDIO_SRC = "/media/1.mp3";
