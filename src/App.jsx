@@ -55,7 +55,7 @@ function App() {
       });
     }
 
-    setPhase("message");
+    setPhase("hello");
   };
 
   useEffect(() => {
@@ -69,7 +69,7 @@ function App() {
       setCountdown((prev) => {
         if (prev <= 1) {
           clearInterval(tick);
-          setPhase("hello");
+          setPhase("gate");
           return 0;
         }
         return prev - 1;
@@ -77,6 +77,16 @@ function App() {
     }, 1000);
 
     return () => clearInterval(tick);
+  }, [phase]);
+
+  useEffect(() => {
+    if (phase !== "hello") return;
+
+    const timeout = setTimeout(() => {
+      setPhase("message");
+    }, 3500);
+
+    return () => clearTimeout(timeout);
   }, [phase]);
 
   return (
@@ -115,13 +125,20 @@ function App() {
           </section>
         )}
 
+        {phase === "gate" && (
+          <section className="panel hello">
+            <h1>Vợ iu của chồng</h1>
+            <p className="helper">Sẵn sàng mở thư chưa nè?</p>
+            <button type="button" className="open-btn" onClick={openLetter}>
+              Mở thư
+            </button>
+          </section>
+        )}
+
         {phase === "hello" && (
           <section className="panel hello">
             <h1>Vợ iu của chồng</h1>
             <p className="helper">Có một bức thư màu xanh dành riêng cho em.</p>
-            <button type="button" className="open-btn" onClick={openLetter}>
-              Mở thư
-            </button>
           </section>
         )}
 
